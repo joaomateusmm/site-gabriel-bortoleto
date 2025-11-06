@@ -173,3 +173,7 @@
 body {
   font-family: var(--font-montserrat), system-ui, -apple-system, sans-serif;
 }
+
+.font-clash-display {
+  font-family: "Clash Display", sans-serif;
+}

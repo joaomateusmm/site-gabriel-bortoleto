@@ -8,8 +8,17 @@ interface LoadingScreenProps {
   onLoadComplete: () => void;
 }
 
+const loadingTexts = [
+  "Buscando o Melhor tempo de volta...",
+  "Pole Position de Gabriel Bortoleto...",
+  "Dobradinha da Sauber...",
+];
+
 export default function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0);
+  const [randomText] = useState(
+    () => loadingTexts[Math.floor(Math.random() * loadingTexts.length)]
+  );
 
   useEffect(() => {
     // Simula carregamento progressivo
@@ -42,7 +51,7 @@ export default function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
         className="mb-8 sm:mb-12"
       >
         <Image
-          src="/logo.svg"
+          src="/icons/logo.svg"
           alt="Gabriel Bortoleto Logo"
           width={180}
           height={180}
@@ -78,7 +87,7 @@ export default function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
         transition={{ delay: 0.5 }}
         className="mt-2 text-white/30 text-xs tracking-widest text-center px-4"
       >
-        Buscando o Melhor tempo de volta...
+        {randomText}
       </motion.p>
 
       {/* Efeito de partículas sutis (opcional) */}

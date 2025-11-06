@@ -22,7 +22,7 @@ interface ModelProps {
 }
 
 function Model({ rotateX, rotateY, moveX, moveY, isMobile }: ModelProps) {
-  const gltf = useGLTF("/helmet.glb");
+  const gltf = useGLTF("/models/helmet.glb");
   const groupRef = useRef<THREE.Group>(null);
 
   // Define escala baseada no tamanho da tela
@@ -35,9 +35,9 @@ function Model({ rotateX, rotateY, moveX, moveY, isMobile }: ModelProps) {
       const mesh = child as THREE.Mesh;
       const material = mesh.material as THREE.MeshStandardMaterial;
       // Propriedades para brilho e reflexão
-      material.metalness = 1; // Aumenta reflexão metálica
+      material.metalness = 5; // Aumenta reflexão metálica
       material.roughness = 0.001; // Diminui rugosidade = mais brilhante
-      material.envMapIntensity = 1.5; // Aumenta intensidade de reflexão do ambiente
+      material.envMapIntensity = 5; // Aumenta intensidade de reflexão do ambiente
       material.emissiveIntensity = 0.05; // Leve brilho próprio
       material.emissive = new THREE.Color("#0a1f15"); // Tom verde escuro
       material.side = THREE.FrontSide; // Renderiza apenas a frente

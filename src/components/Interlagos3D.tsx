@@ -6,7 +6,7 @@ import * as THREE from "three";
 import { useRef } from "react";
 
 function Track() {
-  const gltf = useGLTF("/monaco.glb");
+  const gltf = useGLTF("/models/monaco.glb");
   const groupRef = useRef<THREE.Group>(null);
 
   // Percorre todos os meshes e aplica cor verde
