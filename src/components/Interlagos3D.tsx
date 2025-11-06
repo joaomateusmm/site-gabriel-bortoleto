@@ -14,7 +14,7 @@ function Track() {
     if ((child as THREE.Mesh).isMesh) {
       const mesh = child as THREE.Mesh;
       const material = mesh.material as THREE.MeshStandardMaterial;
-      material.color.set("#808080"); // Branco
+      material.color.set("#BAFFC7"); // Branco
       material.emissive.set("#003300"); // Verde escuro emissivo
       material.emissiveIntensity = 0.2;
       material.needsUpdate = true;

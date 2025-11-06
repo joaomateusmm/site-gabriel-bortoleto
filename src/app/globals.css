@@ -157,3 +157,11 @@
     scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
   }
 }
+
+.box-shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 1);
+}
+
+body {
+  font-family: var(--font-montserrat), system-ui, -apple-system, sans-serif;
+}

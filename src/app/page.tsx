@@ -6,17 +6,22 @@ import GlareHover from "@/components/GlareHover";
 import GlareHover2 from "@/components/GlareHover2";
 import ShinyText from "@/components/ShinyText";
 import ShinyText2 from "@/components/ShinyText2";
-import Aurora from "@/components/Aurora";
 import AnimatedContent from "@/components/AnimatedContent";
 import { Button } from "@/components/ui/button";
 import LiquidEther from "@/components/LiquidEther";
 import CenterModel3D from "@/components/CenterModel3D";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div
       className="bg-[#000a03] "
-      style={{ width: "100vw", height: "100vh", position: "relative" }}
+      style={{
+        width: "100vw",
+        height: "100vh",
+        position: "relative",
+        overflow: "hidden",
+      }}
     >
       {/* Background Ether - Z-index 0 */}
       <div
@@ -50,11 +55,7 @@ export default function Home() {
       <div
         style={{
           position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: "600px",
-          height: "600px",
+          inset: 0,
           zIndex: 5,
           pointerEvents: "none",
         }}
@@ -67,23 +68,29 @@ export default function Home() {
         className="flex justify-between items-center w-full px-12"
         style={{
           position: "absolute",
-          bottom: "85%",
+          bottom: "83%",
           left: "50%",
           transform: "translateX(-50%)",
           zIndex: 10,
           pointerEvents: "auto",
         }}
       >
-        <div className="flex flex-col bg-white/20 px-4 py-1 rounded-md backdrop-blur-md">
-          <h1 className="text-lime-300 text-3xl -mb-2">Gabriel</h1>
-          <h1 className="text-gray-900 text-3xl font-bold">BORTOLETO</h1>
+        <div>
+          <Image
+            src="/logo.svg"
+            alt="Gabriel Bortoleto Logo"
+            width={130}
+            height={130}
+            priority
+            className="opacity-80 hover:scale-115 duration-400 saturate-0 hover:saturate-100"
+          />
         </div>
         <div className="flex gap-4">
-          <Button className="py-9.5 px-auto group bg-white/0 hover:bg-white/10 border-3 border-green-800 transition-all duration-300 overflow-hidden">
+          <Button className="py-9.5 cursor-pointer px-auto group bg-white/0 backdrop-blur-lg hover:bg-white/10 border-3 border-green-800 transition-all duration-300 overflow-hidden">
             <h1 className="text-2xl font-bold">CORRIDAS</h1>
           </Button>
           <Button
-            className="py-10 px-8 group bg-gray-200 hover:bg-gray-300 transition-all duration-300 overflow-hidden"
+            className="py-10 px-8 group bg-gray-200 cursor-pointer hover:bg-gray-300 transition-all duration-300 overflow-hidden"
             style={{ width: "80px" }}
           >
             <div className="flex flex-col gap-3">
@@ -121,7 +128,7 @@ export default function Home() {
             threshold={0.2}
             delay={0.3}
           >
-            <h1 className="text-white/50 text-md font-bold">Última Notícia</h1>
+            <h1 className="text-white/50  text-md font-bold">Última Notícia</h1>
             <div className="flex flex-col gap-3 items-start">
               <GlareHover2
                 glareColor="#ffffff"
@@ -132,7 +139,7 @@ export default function Home() {
                 playOnce={false}
               >
                 <div
-                  className="flex flex-col items-start gap-4 rounded-lg justify-between px-4 custom-scrollbar"
+                  className="flex flex-col backdrop-blur-lg items-start gap-4 rounded-lg justify-between px-4 custom-scrollbar"
                   style={{ maxHeight: "350px", overflowY: "auto" }}
                 >
                   <div className="bg-white/10 px-4 py-1 rounded-full">
@@ -140,6 +147,7 @@ export default function Home() {
                       23 / 10 / 25
                     </h1>
                   </div>
+                  <div></div>
                   <div>
                     <p className="text-md text-white/70 font-medium">
                       Gabriel Bortoleto estreia no GP do México de F1
@@ -152,26 +160,26 @@ export default function Home() {
                       etapa do Campeonato Mundial, que será realizado no
                       tradicional Autódromo Hermanos Rodríguez, na capital
                       mexicana.
-                      <p className="text-sm text-muted-foreground mt-2 font-medium">
-                        A etapa, ainda na AMérica do Norte, sucede um fim de
-                        semana complicado em Austin, no Texas (EUA), onde
-                        Bortoleto terminou a corrida na 18ª posição. O foco
-                        agora está totalmente voltado em reagir e retomar o bom
-                        ritmo apresentado nas provas anteriores.
-                      </p>
-                      <p className="text-sm text-muted-foreground/80 mt-2 font-medium">
-                        “Estou muito animado para correr no México neste fim de
-                        semana.
-                      </p>
-                      <p className="text-sm text-muted-foreground/50 font-medium">
-                        Ouvi muito sobre a atmosfera e a energia dos fãs,
-                      </p>
-                      <p className="text-sm text-muted-foreground/30 font-medium">
-                        e é empolgante finalmente poder viver isso pessoalmente.
-                      </p>
-                      <p className="text-sm text-muted-foreground/10 font-medium">
-                        É uma pista cheia de história, por onde passaram
-                      </p>
+                    </p>
+                    <p className="text-sm text-muted-foreground mt-2 font-medium">
+                      A etapa, ainda na AMérica do Norte, sucede um fim de
+                      semana complicado em Austin, no Texas (EUA), onde
+                      Bortoleto terminou a corrida na 18ª posição. O foco agora
+                      está totalmente voltado em reagir e retomar o bom ritmo
+                      apresentado nas provas anteriores.
+                    </p>
+                    <p className="text-sm text-muted-foreground/80 mt-2 font-medium">
+                      Estou muito animado para correr no México neste fim de
+                      semana.
+                    </p>
+                    <p className="text-sm text-muted-foreground/50 font-medium">
+                      Ouvi muito sobre a atmosfera e a energia dos fãs,
+                    </p>
+                    <p className="text-sm text-muted-foreground/30 font-medium">
+                      e é empolgante finalmente poder viver isso pessoalmente.
+                    </p>
+                    <p className="text-sm text-muted-foreground/10 font-medium">
+                      É uma pista cheia de história, por onde passaram
                     </p>
                   </div>
                   <div>
@@ -200,7 +208,7 @@ export default function Home() {
             delay={0.3}
           >
             <h1 className="text-white/50 text-md font-bold">Próx. Corrida</h1>
-            <div className="flex flex-col gap-3 items-end">
+            <div className="flex flex-col gap-3 items-end backdrop-blur-md">
               <GlareHover
                 glareColor="#ffffff"
                 glareOpacity={0.3}
