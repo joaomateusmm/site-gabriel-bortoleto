@@ -8,18 +8,22 @@ import { useRef } from "react";
 function Track() {
   const gltf = useGLTF("/models/monaco.glb");
   const groupRef = useRef<THREE.Group>(null);
+  const materializedRef = useRef(false);
 
-  // Percorre todos os meshes e aplica cor verde
-  gltf.scene.traverse((child) => {
-    if ((child as THREE.Mesh).isMesh) {
-      const mesh = child as THREE.Mesh;
-      const material = mesh.material as THREE.MeshStandardMaterial;
-      material.color.set("#BAFFC7"); // Branco
-      material.emissive.set("#003300"); // Verde escuro emissivo
-      material.emissiveIntensity = 0.2;
-      material.needsUpdate = true;
-    }
-  });
+  // Percorre todos os meshes e aplica cor verde - APENAS UMA VEZ
+  if (!materializedRef.current) {
+    gltf.scene.traverse((child) => {
+      if ((child as THREE.Mesh).isMesh) {
+        const mesh = child as THREE.Mesh;
+        const material = mesh.material as THREE.MeshStandardMaterial;
+        material.color.set("#BAFFC7"); // Branco
+        material.emissive.set("#003300"); // Verde escuro emissivo
+        material.emissiveIntensity = 0.2;
+        material.needsUpdate = true;
+      }
+    });
+    materializedRef.current = true;
+  }
 
   // Rotação automática
   useFrame(() => {
@@ -49,9 +53,10 @@ export default function Interlagos3D() {
           antialias: false,
           powerPreference: "high-performance",
         }}
+        dpr={[1, 1.5]}
       >
-        <ambientLight intensity={1} />
-        <directionalLight position={[1, 5, 5]} intensity={1} />
+        <ambientLight intensity={0.8} />
+        <directionalLight position={[1, 5, 5]} intensity={0.8} />
 
         <Track />
       </Canvas>

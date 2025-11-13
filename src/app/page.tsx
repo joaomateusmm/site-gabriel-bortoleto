@@ -9,8 +9,9 @@ import HeaderTablet from "@/components/Header/HeaderTablet";
 import HeaderMobile from "@/components/Header/HeaderMobile";
 import NewsCardDesktop from "@/components/Cards/NewsCardDesktop";
 import RaceCardDesktop from "@/components/Cards/RaceCardDesktop";
-import RaceCardDesktop2 from "@/components/Cards/RaceCardDesktop2";
 import RaceCardMobile from "@/components/Cards/RaceCardMobile";
+import TrackInfoDesktop from "@/components/Cards/TrackInfoDesktop";
+import TrackInfoMobile from "@/components/Cards/TrackInfoMobile";
 import { useScreenSize } from "@/hooks/useMediaQuery";
 import ScrollVelocity from "@/components/ScrollVelocity";
 import DotGrid from "@/components/DotGrid";
@@ -267,12 +268,12 @@ export default function Home() {
             <LiquidEther
               colors={["#4dff29", "#22b44e", "#b0f0a3"]}
               mouseForce={20}
-              cursorSize={100}
+              cursorSize={80}
               isViscous={true}
-              viscous={30}
-              iterationsViscous={32}
-              iterationsPoisson={32}
-              resolution={0.5}
+              viscous={20}
+              iterationsViscous={16}
+              iterationsPoisson={16}
+              resolution={0.25}
               isBounce={true}
               autoDemo={true}
               autoSpeed={0.5}
@@ -376,17 +377,18 @@ export default function Home() {
             inset: 0,
             zIndex: 0,
             pointerEvents: "none",
+            willChange: "transform",
           }}
         >
           <DotGrid
             dotSize={2}
-            gap={15}
+            gap={20}
             baseColor="#1a1a1a"
             activeColor="#217510"
-            proximity={120}
-            shockRadius={210}
+            proximity={100}
+            shockRadius={150}
             shockStrength={5}
-            resistance={750}
+            resistance={500}
             returnDuration={1.5}
           />
         </div>
@@ -399,138 +401,12 @@ export default function Home() {
             </h1>
           </div>
           <div className="flex flex-col items-center gap-8 w-full px-8 md:px-16">
-            <div className="flex gap-6 w-full">
-              {/* Card do Modelo 3D */}
-              <div className="flex-1 backdrop-blur-xs rounded-2xl p-8 border border-white/10">
-                <RaceCardDesktop2 />
-              </div>
+            {/* Cards Desktop */}
+            {isDesktop && <TrackInfoDesktop />}
 
-              {/* Card de Informações da Pista */}
-              <div className="flex-1 backdrop-blur-xs  rounded-2xl p-8 border border-white/10">
-                {/* Data do GP */}
-                <div className="mb-8">
-                  <p className="text-white/60 text-sm font-medium mb-2 uppercase tracking-wider">
-                    Quando
-                  </p>
-                  <div className="flex flex-col items-start">
-                    <div className="flex items-center justify-center gap-4">
-                      <h2 className="text-[#c8ff00] text-7xl font-bold font-clash-display leading-none mb-2 flex items-center gap-2">
-                        23 <span className="text-2xl">-</span> 11{" "}
-                        <span className="text-2xl">-</span> 25
-                      </h2>
-                    </div>
-                    <p className="text-white text-4xl font-bold font-clash-display">
-                      NOV
-                    </p>
-                  </div>
-                </div>
+            {/* Cards Mobile/Tablet */}
+            {!isDesktop && <TrackInfoMobile />}
 
-                {/* Estatísticas em Grid */}
-                <div className="grid grid-cols-3 gap-6 mb-8">
-                  {/* Length */}
-                  <div>
-                    <p className="text-white/60 text-xs font-medium mb-2 uppercase tracking-wider">
-                      Altitude
-                    </p>
-                    <p className="text-[#c8ff00] text-4xl font-bold font-clash-display leading-none">
-                      765
-                    </p>
-                    <p className="text-white text-sm font-medium mt-1">M</p>
-                  </div>
-
-                  {/* Distance */}
-                  <div>
-                    <p className="text-white/60 text-xs font-medium mb-2 uppercase tracking-wider">
-                      DISTÂNCIA
-                    </p>
-                    <p className="text-[#c8ff00] text-4xl font-bold font-clash-display leading-none">
-                      305.879
-                    </p>
-                    <p className="text-white text-sm font-medium mt-1">KM</p>
-                  </div>
-
-                  {/* First Competed */}
-                  <div>
-                    <p className="text-white/60 text-xs font-medium mb-2 uppercase tracking-wider">
-                      Primeiro Ano
-                    </p>
-                    <p className="text-[#c8ff00] text-4xl font-bold font-clash-display leading-none">
-                      2025
-                    </p>
-                  </div>
-                </div>
-
-                {/* Laps */}
-                <div className="mb-8">
-                  <p className="text-white/60 text-xs font-medium mb-2 uppercase tracking-wider">
-                    Voltas
-                  </p>
-                  <p className="text-[#c8ff00] text-6xl font-bold font-clash-display leading-none">
-                    71
-                  </p>
-                </div>
-
-                {/* Lando at São Paulo */}
-                <div className="border-t border-white/10 pt-6">
-                  <p className="text-white text-sm font-bold mb-2 uppercase tracking-wider">
-                    BORTOLETO EM SÃO PAULO
-                  </p>
-                  <p className="text-white/70 text-sm leading-relaxed">
-                    O jovem, natural de Osasco, já competiu no kartódromo de
-                    Interlagos. Mas no traçado que recebe a F1, só uma vez: em
-                    2022, aos 17 anos, quando dividiu a garagem da KTF Sports
-                    com Gaetano di Mauro na Corrida de Duplas da Stock Car.
-                  </p>
-                </div>
-
-                {/* Schedule */}
-                <div className="mt-6 border-t border-white/10 pt-6">
-                  <p className="text-white text-sm font-bold mb-4 uppercase tracking-wider">
-                    Horários
-                  </p>
-                  <div className="space-y-3">
-                    <div className="grid grid-cols-3 gap-4 items-center text-sm">
-                      <span className="text-white font-bold">
-                        Treino Livre 1
-                      </span>
-                      <span className="text-white/70 text-center">7 NOV</span>
-                      <span className="text-white/70 text-right">12:30</span>
-                    </div>
-                    <div className="grid grid-cols-3 gap-4 items-center text-sm">
-                      <span className="text-white font-bold">Quali Sprint</span>
-                      <span className="text-white/70 text-center">7 NOV</span>
-                      <span className="text-white/70 text-right">15:30</span>
-                    </div>
-                    <div className="grid grid-cols-3 gap-4 items-center text-sm">
-                      <span className="text-white font-bold">
-                        Corrida Sprint
-                      </span>
-                      <span className="text-white/70 text-center">8 NOV</span>
-                      <span className="text-white/70 text-right">11:00</span>
-                    </div>
-                    <div className="grid grid-cols-3 gap-4 items-center text-sm">
-                      <span className="text-white font-bold">
-                        Quali Corrida
-                      </span>
-                      <span className="text-white/70 text-center">8 NOV</span>
-                      <span className="text-white/70 text-right">15:00</span>
-                    </div>
-                    <div className="grid grid-cols-3 gap-4 items-center text-sm">
-                      <span className="text-[#c8ff00] font-bold">Corrida</span>
-                      <span className="text-[#c8ff00] font-bold text-center">
-                        9 NOV
-                      </span>
-                      <span className="text-[#c8ff00] font-bold text-right">
-                        12:00
-                      </span>
-                    </div>
-                    <p className="text-white/50 text-xs text-end mt-2">
-                      *SP TIME
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
             <div className="w-full px-6">
               <Table>
                 <TableCaption>

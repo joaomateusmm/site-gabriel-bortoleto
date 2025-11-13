@@ -13,25 +13,29 @@ function Track() {
   const targetRotation = useRef(0);
   const currentRotation = useRef(0);
   const { gl } = useThree();
+  const materializedRef = useRef(false);
 
-  // Percorre todos os meshes e aplica material metálico brilhante
-  gltf.scene.traverse((child) => {
-    if ((child as THREE.Mesh).isMesh) {
-      const mesh = child as THREE.Mesh;
-      const material = mesh.material as THREE.MeshStandardMaterial;
+  // Percorre todos os meshes e aplica material metálico brilhante - APENAS UMA VEZ
+  if (!materializedRef.current) {
+    gltf.scene.traverse((child) => {
+      if ((child as THREE.Mesh).isMesh) {
+        const mesh = child as THREE.Mesh;
+        const material = mesh.material as THREE.MeshStandardMaterial;
 
-      // Cor base verde metálico brilhante
-      material.color.set("#217042"); // Verde limão vibrante
-      material.emissive.set("#29613B"); // Verde neon emissivo
-      material.emissiveIntensity = 0.8; // Maior intensidade emissiva
+        // Cor base verde metálico brilhante
+        material.color.set("#217042"); // Verde limão vibrante
+        material.emissive.set("#29613B"); // Verde neon emissivo
+        material.emissiveIntensity = 0.8; // Maior intensidade emissiva
 
-      // Propriedades metálicas
-      material.metalness = 1; // Muito metálico
-      material.roughness = 0.1; // Pouco rugoso = mais brilhante
+        // Propriedades metálicas
+        material.metalness = 1; // Muito metálico
+        material.roughness = 0.1; // Pouco rugoso = mais brilhante
 
-      material.needsUpdate = true;
-    }
-  });
+        material.needsUpdate = true;
+      }
+    });
+    materializedRef.current = true;
+  }
 
   useEffect(() => {
     const canvas = gl.domElement;
@@ -112,12 +116,12 @@ export default function Interlagos3D2() {
           antialias: true,
           powerPreference: "high-performance",
         }}
+        dpr={[1, 1.5]}
         style={{ cursor: "inherit" }}
       >
-        <ambientLight intensity={0.8} />
-        <directionalLight position={[5, 5, 5]} intensity={1.5} />
-        <directionalLight position={[-5, 3, -5]} intensity={0.8} />
-        <pointLight position={[0, 10, 0]} intensity={0.1} color="#fff" />
+        <ambientLight intensity={0.6} />
+        <directionalLight position={[5, 5, 5]} intensity={1.2} />
+        <directionalLight position={[-5, 3, -5]} intensity={0.6} />
 
         <Track />
       </Canvas>

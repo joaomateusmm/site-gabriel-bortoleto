@@ -49,29 +49,30 @@ export default function NewsCardDesktop() {
             >
               <div className="bg-white/10 px-4 py-1 rounded-full">
                 <h1 className="text-white/50 text-sm font-medium">
-                  23 / 10 / 25
+                  10 / 11 / 25
                 </h1>
               </div>
               <div className="w-full flex justify-center">
                 <Image
                   width={228}
                   height={128}
-                  src="/news-1.jpg"
+                  src="/news-1.webp"
                   alt="Notícia GP do México"
                   className="w-full rounded-2xl"
                 />
               </div>
               <div>
                 <p className="text-md text-white/70 font-medium">
-                  Gabriel Bortoleto estreia no GP do México de F1
+                  Bortoleto frustra em estreia no Brasil e promete se reerguer
+                  para Las Vegas: Não tem como ser pior
                 </p>
                 <p className="text-sm text-muted-foreground mt-2 font-medium">
-                  O piloto brasileiro Gabriel Bortoleto, natural de Osasco (SP),
-                  encara neste fim de semana mais um desafio em sua temporada de
-                  estreia na Fórmula 1. O jovem competidor disputará pela
-                  primeira vez o Grande Prêmio do México, 20ª etapa do
-                  Campeonato Mundial, que será realizado no tradicional
-                  Autódromo Hermanos Rodríguez, na capital mexicana.
+                  Gabriel Bortoleto não teve uma estreia dos sonhos em sua home
+                  race, no GP de São Paulo, que aconteceu neste domingo, no
+                  Autódromo José Carlos Pace, em Interlagos. Pelo contrário, o
+                  brasileiro teve que lidar com dois acidentes e abandnou a
+                  corrida logo no início. Após a frustração, o piloto da Sauber
+                  prometeu se reerguer em Las Vegas.
                 </p>
                 <p className="text-sm text-muted-foreground mt-2 font-medium">
                   A etapa, ainda na AMérica do Norte, sucede um fim de semana
